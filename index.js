@@ -20,14 +20,14 @@ const server = http.createServer((req, res) => {
         
         fs.readFile(`${__dirname}/templates/template-laptop.html`, 'utf-8', (err, data) => {
             const laptop = laptopData[id];
-            let output = data.replace('{%PRODUCTNAME%}', laptop.productName);
-            let output = output.replace('{%IMAGE%}', laptop.image);
-            let output = output.replace('{%PRICE%}', laptop.price);
-            let output = output.replace('{%SCREEN%}', laptop.screen);
-            let output = output.replace('{%CPU%}', laptop.cpu);
-            let output = output.replace('{%STORAGE%}', laptop.storage);
-            let output = output.replace('{%RAM%}', laptop.ram);
-            let output = output.replace('{%DESCRIPTION%}', laptop.description);
+            let output = data.replace(/{%PRODUCTNAME%}/g, laptop.productName);
+            let output = output.replace(/{%IMAGE%}/g, laptop.image);
+            let output = output.replace(/{%PRICE%}/g, laptop.price);
+            let output = output.replace(/{%SCREEN%}/g, laptop.screen);
+            let output = output.replace(/{%CPU%}/g, laptop.cpu);
+            let output = output.replace(/{%STORAGE%}/g, laptop.storage);
+            let output = output.replace(/{%RAM%}/g, laptop.ram);
+            let output = output.replace(/{%DESCRIPTION%}/g, laptop.description);
         });
     }
 
