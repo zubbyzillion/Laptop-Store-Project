@@ -41,8 +41,9 @@ const server = http.createServer((req, res) => {
 
     //IMAGES
     else if (/\.(jpg|jprg|png|gif)$/i.test(pathName)) {
-        fs.readFile({`${__dirname}/data/img${pathName}`, (err, data)} => {
-
+        fs.readFile(`${__dirname}/data/img${pathName}`, (err, data) => {
+            res.writeHead(200, { 'Content-type': 'image/jpg', });
+            res.end(data);
         })
     }
 
