@@ -14,9 +14,12 @@ const server = http.createServer((req, res) => {
         res.writeHead(200, { 'Content-type': 'text/html'});
 
         fs.readFile(`${__dirname}/templates/template-overview.html`, 'utf-8', (err, data) => {
+            fs.readFile(`${__dirname}/templates/template-card.html`, 'utf-8', (err, data) => {
 
-
-            res.end(data);
+                const cardsOutput = laptopData.map(el => replaceTemplate(data, el)).join('');
+                console.log(cardsOutput);
+                res.end(data);
+            });
         });
 
     }
